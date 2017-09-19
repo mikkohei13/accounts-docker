@@ -142,3 +142,14 @@ This setup requires modifying the hosts file. Another option would be to include
 [1] Building/packaging means e.g.
 - Packaging Java code into JAR-package
 - Building Ember project into minified files
+
+# Debugging
+
+To access Keycloak admin ui, add this to docker-compose.yml, under `sso`:
+
+    ports:
+      - "8080:8080"
+
+Then do `docker-compose down sso` and `docker-compose up -d sso`. (`docker-compose restart sso` is not enough)
+
+Remove the port binding after you are done debugging.
