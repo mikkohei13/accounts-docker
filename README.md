@@ -47,7 +47,7 @@ To use branch other than master, type
 
 		make secrets
 
-Making secrets again has no effect, as `make` will not overwrite existing file. But if you remove the file and `make` it again, you have to configure email settings again, and make sure that connection between MySQLAdd note 
+Making secrets again has no effect, as `make` will not overwrite existing file. But if you remove the file and `make` it again, you have to configure email settings again, and make sure that connection between MySQL and Keycloak works properly.
 
 		firefox https://beta-accounts.dina-web.net
 
