@@ -49,9 +49,55 @@ To use branch other than master, type
 
 Making secrets again has no effect, as `make` will not overwrite existing file. But if you remove the file and `make` it again, you have to configure email settings again, and make sure that connection between MySQL and Keycloak works properly.
 
+### **3\)** Configure email settings
+
+To configure email server settings, edit the "secrets" file and fill in the missing values.
+
+### **4\)** Make dotfiles, which will contain environment variables.
+
+		make dotfiles
+
+### **5\)** Set up reverse proxy
+
+**TBD:** This steps needs decision on how we are going to work for local builds, and then documenting this decision here in such a detail, that module can be set up. Using star certificate (probably not), self-signed certs (overhead of adding the cert locally?) or letsencrypt.
+
+There are two ways of setting up reverse proxy to handle HTTPS traffic to the module:
+
+**A)** Use the proxy that is set up using docker-compose
+
+This can be used if only this module is run on the server (Docker host). 
+
+Copy \*.dina-web.net certificate files to the directories indicated in `docker-compose.yml`.
+
+**TODO:** Update instructions regarding how certs are used, and where to put them.
+
+**B)** Set up separate proxy-docker
+
+This is needed if there are several modules running on same server (Docker host).
+
+See instructions on **proxy-docker** repository.
+
+**TODO:** Add instructions on proxy-docker repository. Link to correct branch there. (Remove unneeded branches?) Link also from bootstrap repo, in order to avoid duplicate instructions.
+
+### **6\)** Build and run Docker containers
+
+		make
+
+**Note**: A local build will initially pulls many dependencies (~150+M maven libs for the API, ~1.4G npm packages for the UI) and takes c. 20 minutes depending on Internet connection speed. Re-building is faster, a couple of minutes at the most.
+
+You can also use `make up` to start the system from pre-existing images. If these are not present locally, Docker will pull these from DINA's account on Docker Hub. **Note** that these images are not necessarily up to date.
+
+### **7\)** Acccess the UI
+
+Add the following entries to the `/etc/hosts` file so that your host responds to the above services:
+
+		127.0.0.1	beta-accounts.dina-web.net beta-api.dina-web.net beta-sso.dina-web.net
+
+Then open up your browser at https://beta-accounts.dina-web.net
+
 		firefox https://beta-accounts.dina-web.net
 
-Log in with the default Accounts API user credentials from the 'envapi.template' file that you have used, usually user: admin@nrm.se and pass: admin#001.
+Log in with the default Accounts API user credentials from the 'envapi.template' file that you have used, usually user: admin@nrm.se and password: admin#001.
 
 ## Upgrading the module locally
 
