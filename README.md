@@ -77,8 +77,6 @@ Create self-signed certificates:
 	cp /tmp/certs/key.pem certs/dina-web.net.key
 	cp -R certs nginx-certs
 
-**TODO:** Update instructions regarding how certs are used, and where to put them.
-
 **B)** Set up separate proxy-docker
 
 This is needed if there are several modules running on same server (Docker host). See instructions on **proxy-docker** repository.
@@ -99,7 +97,7 @@ Add the following entries to the `/etc/hosts` file so that your host responds to
 
 		127.0.0.1	beta-accounts.dina-web.net beta-api.dina-web.net beta-sso.dina-web.net
 
-If you are using a self-signed certificate, set your browser to trust it. In Firefox: Preferences > Advanced > Certificates > View Certificates > Authorities > Import. Import the **ca.pom** file you created to the `/tmp/certs` directory.
+Make your browser to trust the self-signed certificates. In Firefox: Preferences > Advanced > Certificates > View Certificates > Authorities > Import. Import the **ca.pom** file you created to the `/tmp/certs` directory.
 
 Then open up your browser at https://beta-accounts.dina-web.net
 
