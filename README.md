@@ -21,7 +21,7 @@ Requirements:
 - `git`
 - Email server, eg. [DINA Mail-docker](https://github.com/DINA-Web/mail-docker)
 
-See bootstrap repository for [details about setting up your host](https://github.com/DINA-Web/bootstrap).
+See bootstrap repository for [details about setting up the requirements](https://github.com/DINA-Web/bootstrap).
 
 ## Step-by-step instructions
 
