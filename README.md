@@ -133,6 +133,18 @@ This setup requires modifying the hosts file. Another option would be to include
 
 In order for the `ws` service to start up properly, `sso` needs to be running. Failure will lead to the `ws` exiting and login not working. This is now handled by declaring `ws` to be dependent on `sso` in the `docker-compose.yml` file, but this solution is not foolproof (see official documentation on `depends_on`). If issues arise, wait-for-me or similar could be used. 
 
+if you want to change email configuration after the first build, this must be done with the Keycloak admin interface. (Changing email configuration in secrets/env-files has no effect.)
+
+To access Keycloak admin interface, do this:
+- Add `sso` to `/etc/hosts`
+- Add this to `docker-compose.yml`:
+
+		ports:
+		  - 8080:8080
+
+- Stop and start `sso` service (simple restart isn't enough)
+- Access `sso:8080` with your browser
+
 # Technical overview of the build & deployment process
 
 1) Pull latest code from Github
