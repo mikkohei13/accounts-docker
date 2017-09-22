@@ -158,8 +158,8 @@ if you want to change email configuration after the first build, this must be do
 To access Keycloak admin ui do this:
 - Add this to `docker-compose.yml`, under `sso`:
 
-    ports:
-      - "8080:8080"
+		ports:
+		  - "8080:8080"
 
 - Add `sso` to `/etc/hosts`
 - Do `docker-compose down sso` and `docker-compose up -d sso`. (`docker-compose restart sso` is not enough)
