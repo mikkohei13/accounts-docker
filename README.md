@@ -125,11 +125,13 @@ When building on MacOS, the "envsubst" command used in `make dotfiles` may not b
 		brew install gettext
 		brew link --force gettext 
 
-## Issues
+## Issues & notes
 
 Currently these are some known issues that stops the system from being fully functional upon start. Please see the Issues list of this repository for details.
 
 This setup requires modifying the hosts file. Another option would be to include name server as a service.
+
+In order for the `ws` service to start up properly, `sso` needs to be running. Failure will lead to the `ws` exiting and login not working. This is now handled by declaring `ws` to be dependent on `sso` in the `docker-compose.yml` file, but this solution is not foolproof (see official documentation on `depends_on`). If issues arise, wait-for-me or similar could be used. 
 
 # Technical overview of the build & deployment process
 
