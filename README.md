@@ -87,15 +87,15 @@ See instructions on **proxy-docker** repository.
 
 You can also use `make up` to start the system from pre-existing images. If these are not present locally, Docker will pull these from DINA's account on Docker Hub. **Note** that these images are not necessarily up to date.
 
-### **7\)** Acccess the UI
+### **7\)** Set up your host to access the system
 
 Add the following entries to the `/etc/hosts` file so that your host responds to the above services:
 
 		127.0.0.1	beta-accounts.dina-web.net beta-api.dina-web.net beta-sso.dina-web.net
 
-Then open up your browser at https://beta-accounts.dina-web.net
+If you are using a self-signed certificate, set your browser to trust it. In Firefox: Preferences > Advanced > Certificates > View Certificates > Authorities > Import. Import the **ca.pom** file you created to the `/tmp/certs` directory.
 
-		firefox https://beta-accounts.dina-web.net
+Then open up your browser at https://beta-accounts.dina-web.net
 
 Log in with the default Accounts API user credentials from the 'envapi.template' file that you have used, usually user: admin@nrm.se and password: admin#001.
 
